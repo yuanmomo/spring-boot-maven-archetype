@@ -14,9 +14,7 @@ package net.yuanmomo.springboot.util;
 
 /**
  * ClassName : PaginationUtil 
- * Function  : TODO ADD FUNCTION. 
- * Reason    : TODO ADD REASON. 
- * Date      : 2014-3-20 下午2:55:03 
+ * Date      : 2014-3-20 下午2:55:03
  *
  * @author   : Hongbin Yuan
  * @version  

@@ -21,9 +21,7 @@ import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
 /**
  * ClassName : AliasExampleWhereClauseGenerator 
- * Function  : TODO ADD FUNCTION. 
- * Reason    : TODO ADD REASON. 
- * Date      : 2014-2-18 上午11:49:55 
+ * Date      : 2014-2-18 上午11:49:55
  *
  * @author   : Hongbin Yuan
  * @version  

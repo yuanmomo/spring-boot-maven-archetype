@@ -12,9 +12,7 @@
 package net.yuanmomo.mbg.plugin;
 /**
  * ClassName : PaginationPlugin 
- * Function  : TODO ADD FUNCTION. 
- * Reason    : TODO ADD REASON. 
- * Date      : 2013-9-6 下午3:08:21 
+ * Date      : 2013-9-6 下午3:08:21
  *
  * @author   : Hongbin Yuan
  * @version  

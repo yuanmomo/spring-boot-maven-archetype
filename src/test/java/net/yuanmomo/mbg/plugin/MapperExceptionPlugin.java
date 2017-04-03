@@ -22,9 +22,7 @@ import java.util.List;
 
 /**
  * ClassName : MapperException 
- * Function  : TODO ADD FUNCTION. 
- * Reason    : TODO ADD REASON. 
- * Date      : 2014-2-18 下午3:51:44 
+ * Date      : 2014-2-18 下午3:51:44
  *
  * @author   : Hongbin Yuan
  * @version  
@@ -52,7 +50,6 @@ public class MapperExceptionPlugin extends PluginAdapter {
 	 */
 	@Override
 	public boolean validate(List<String> warnings) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 

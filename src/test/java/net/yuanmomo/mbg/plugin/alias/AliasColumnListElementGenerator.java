@@ -21,8 +21,7 @@ import java.util.Iterator;
 
 /**
  * ClassName : AliasColumnListElementGenerator 
- * Function : TODO ADD FUNCTION.
- * Reason : TODO ADD REASON. Date : 2013-12-25 上午12:51:03
+ * Date : 2013-12-25 上午12:51:03
  * 
  * @author : Hongbin Yuan
  * @version

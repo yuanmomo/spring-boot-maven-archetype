@@ -21,8 +21,8 @@ import java.util.List;
 import static org.mybatis.generator.internal.util.StringUtility.stringHasValue;
 
 /**
- * ClassName : ResultMapWithoutBLOBsElementGenerator Function : TODO ADD
- * FUNCTION. Reason : TODO ADD REASON. Date : 2013-12-25 上午12:18:34
+ * ClassName : ResultMapWithoutBLOBsElementGenerator
+ * Date : 2013-12-25 上午12:18:34
  * 
  * @author : Hongbin Yuan
  * @version
