@@ -102,6 +102,20 @@ public class AjaxResponseBean {
 		}
 		return new AjaxResponseBean(OK, NO_DATA_MESSAGE,paginationBean);
 	}
+
+	@Override
+	public String toString() {
+		return "AjaxResponseBean{" +
+				"statusCode=" + statusCode +
+				", message=" + message +
+				", navTabId='" + navTabId + '\'' +
+				", rel='" + rel + '\'' +
+				", callbackType='" + callbackType + '\'' +
+				", forwardUrl='" + forwardUrl + '\'' +
+				", returnValue=" + returnValue +
+				'}';
+	}
+
 	public int getStatusCode() {
 		return statusCode;
 	}

@@ -3,7 +3,7 @@
 <configuration scan="true" scanPeriod="30 seconds">
 
     <contextName>spring-boot-maven-archetype</contextName>
-    <property name="LOG_HOME" value="."/>
+    <property name="LOG_HOME" value="${logging.path}"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender"> <!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder
 			by default -->
@@ -34,7 +34,7 @@
         <appender-ref ref="systemLog"/>
     </logger>
 
-    <root level="${log.root.level}">
+    <root level="${logging.level.root}">
         <appender-ref ref="STDOUT"/>
     </root>
 </configuration>
