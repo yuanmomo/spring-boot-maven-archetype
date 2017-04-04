@@ -1,4 +1,4 @@
-package net.yuanmomo.springboot.test.controller.http;
+package net.yuanmomo.springboot.test.controller.it;
 
 import com.google.gson.Gson;
 import net.yuanmomo.springboot.Application;
@@ -21,7 +21,7 @@ import java.net.URL;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = {Application.class})
 @Transactional
 //@Rollback
-public class BaseHttpTest {
+public class BaseITTest {
 
     @LocalServerPort private int port;
 

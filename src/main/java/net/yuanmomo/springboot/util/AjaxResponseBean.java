@@ -116,6 +116,32 @@ public class AjaxResponseBean {
 				'}';
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		AjaxResponseBean that = (AjaxResponseBean) o;
+
+		if (statusCode != that.statusCode) return false;
+		if (message != null ? !message.equals(that.message) : that.message != null) return false;
+		if (navTabId != null ? !navTabId.equals(that.navTabId) : that.navTabId != null) return false;
+		if (rel != null ? !rel.equals(that.rel) : that.rel != null) return false;
+		if (callbackType != null ? !callbackType.equals(that.callbackType) : that.callbackType != null) return false;
+		return forwardUrl != null ? forwardUrl.equals(that.forwardUrl) : that.forwardUrl == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = statusCode;
+		result = 31 * result + (message != null ? message.hashCode() : 0);
+		result = 31 * result + (navTabId != null ? navTabId.hashCode() : 0);
+		result = 31 * result + (rel != null ? rel.hashCode() : 0);
+		result = 31 * result + (callbackType != null ? callbackType.hashCode() : 0);
+		result = 31 * result + (forwardUrl != null ? forwardUrl.hashCode() : 0);
+		return result;
+	}
+
 	public int getStatusCode() {
 		return statusCode;
 	}

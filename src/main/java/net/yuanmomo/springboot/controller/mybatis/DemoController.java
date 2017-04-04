@@ -1,6 +1,5 @@
 package net.yuanmomo.springboot.controller.mybatis;
 
-import java.util.List;
 import net.yuanmomo.springboot.bean.Demo;
 import net.yuanmomo.springboot.bean.DemoParam;
 import net.yuanmomo.springboot.business.mybatis.DemoBusiness;
@@ -16,6 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/backend/demo")
@@ -87,7 +88,7 @@ public class DemoController {
      * @mbg.generated
      */
     @RequestMapping(value = "selectDemoList.do")
-    public AjaxResponseBean selectDemoList(@RequestParam("conditionType")  Short conditionType, @RequestParam("conditionValue")  String conditionValue, @ModelAttribute  PaginationBean paginationBean) {
+    public AjaxResponseBean selectDemoList(@RequestParam(value = "conditionType",required = false)  Short conditionType, @RequestParam(value ="conditionValue",required = false)  String conditionValue, @ModelAttribute  PaginationBean paginationBean) {
         try {
             long currentPage = paginationBean.getPageNum();
             long pageSize = paginationBean.getNumPerPage(); 

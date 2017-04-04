@@ -1,4 +1,4 @@
-package net.yuanmomo.springboot.test.controller.http;
+package net.yuanmomo.springboot.test.controller.it;
 
 import org.junit.Test;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +10,7 @@ import static org.junit.Assert.assertThat;
  * Created by Hongbin.Yuan on 2017-04-03 21:34.
  */
 
-public class HelloControllerHttpTest extends BaseHttpTest{
+public class HelloControllerITTest extends BaseITTest {
 
     @Test
     public void getHello() throws Exception {

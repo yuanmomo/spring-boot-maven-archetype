@@ -2,7 +2,7 @@ package net.yuanmomo.springboot.util;
 
 import java.util.List;
 
-public class PaginationBean {
+public class PaginationBean<T> {
 	private long pageNum;
 	
 	private long numPerPage;
@@ -11,7 +11,7 @@ public class PaginationBean {
 	
 	private long totalPages;
 	
-	private List<?> result;
+	private List<T> result;
 
 	/**
 	 * totalPages.
@@ -89,7 +89,7 @@ public class PaginationBean {
 	 * @param   numPerPage    the numPerPage to set
 	 * @since   JDK 1.6
 	 */
-	public void setNumPerPage(int numPerPage) {
+	public void setNumPerPage(long numPerPage) {
 		this.numPerPage = numPerPage;
 	}
 
@@ -99,7 +99,7 @@ public class PaginationBean {
 	 * @return  the result
 	 * @since   JDK 1.6
 	 */
-	public List<?> getResult() {
+	public List<T> getResult() {
 		return result;
 	}
 
@@ -109,7 +109,31 @@ public class PaginationBean {
 	 * @param   result    the result to set
 	 * @since   JDK 1.6
 	 */
-	public void setResult(List<?> result) {
+	public void setResult(List<T> result) {
 		this.result = result;
+	}
+
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		PaginationBean that = (PaginationBean) o;
+
+		if (pageNum != that.pageNum) return false;
+		if (numPerPage != that.numPerPage) return false;
+		if (totalCount != that.totalCount) return false;
+		if (totalPages != that.totalPages) return false;
+		return result != null ? result.equals(that.result) : that.result == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result1 = (int) (pageNum ^ (pageNum >>> 32));
+		result1 = 31 * result1 + (int) (numPerPage ^ (numPerPage >>> 32));
+		result1 = 31 * result1 + (int) (totalCount ^ (totalCount >>> 32));
+		result1 = 31 * result1 + (int) (totalPages ^ (totalPages >>> 32));
+		return result1;
 	}
 }

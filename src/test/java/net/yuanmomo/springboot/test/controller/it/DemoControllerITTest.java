@@ -1,4 +1,4 @@
-package net.yuanmomo.springboot.test.controller.http;
+package net.yuanmomo.springboot.test.controller.it;
 
 import net.yuanmomo.springboot.bean.Demo;
 import net.yuanmomo.springboot.util.AjaxResponseBean;
@@ -12,7 +12,7 @@ import static org.junit.Assert.assertEquals;
  * Created by Hongbin.Yuan on 2017-04-03 21:34.
  */
 @Sql("classpath:sql/demo.sql")
-public class DemoControllerHttpTest extends BaseHttpTest{
+public class DemoControllerITTest extends BaseITTest {
 
     private static final String BASE_MAPPING = "/backend/demo/";
 

@@ -23,9 +23,9 @@ public class SelectListControllerGenerator {
         method.setReturnType(new FullyQualifiedJavaType(AjaxResponseBean.class.getName()));
         method.setName("select" + beanName + "List");
         Parameter param1 = new Parameter(new FullyQualifiedJavaType(Short.class.getName()), "conditionType");
-        param1.addAnnotation("@RequestParam(\"conditionType\") ");
+        param1.addAnnotation("@RequestParam(value = \"conditionType\",required = false) ");
         Parameter param2 = new Parameter(FullyQualifiedJavaType.getStringInstance(), "conditionValue");
-        param2.addAnnotation("@RequestParam(\"conditionValue\") ");
+        param2.addAnnotation("@RequestParam(value =\"conditionValue\",required = false) ");
         Parameter param3 = new Parameter(new FullyQualifiedJavaType(PaginationBean.class.getName()), "paginationBean");
         param3.addAnnotation("@ModelAttribute ");
         method.addParameter(param1); 
