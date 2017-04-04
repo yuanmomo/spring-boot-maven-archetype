@@ -76,7 +76,7 @@ public class ControllerPluginUtil{
 		String beanClass = introspectedTable.getBaseRecordType();
 		// Bean的名称(Test)
 		String beanName = introspectedTable.getTableConfiguration().getDomainObjectName();
-		// bean Filed Name
+		// bean Field Name
         String beanFieldName = StringUtils.uncapitalize(beanName);
 		FullyQualifiedJavaType beanType = new FullyQualifiedJavaType(beanClass);
 		// BeanExample的名称(TestCriteria)

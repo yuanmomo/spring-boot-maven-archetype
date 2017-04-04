@@ -53,10 +53,10 @@ public class PaginationPlugin extends PluginAdapter {
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass,
             IntrospectedTable introspectedTable) {
         // add field, getter, setter for limit start clause
-        this.addFiled(topLevelClass, introspectedTable,
+        this.addField(topLevelClass, introspectedTable,
                 new FullyQualifiedJavaType("long"), "start", "-1");
         // add field, getter, setter for limit count clause
-        this.addFiled(topLevelClass, introspectedTable,
+        this.addField(topLevelClass, introspectedTable,
                 new FullyQualifiedJavaType("long"), "count", "-1");
         return super.modelExampleClassGenerated(topLevelClass,
                 introspectedTable);
@@ -91,7 +91,7 @@ public class PaginationPlugin extends PluginAdapter {
     }
 
     /**
-     * addFiled: 添加一个类的成员变量，同时添加相应的 setter 和 getter. <br/>
+     * addField: 添加一个类的成员变量，同时添加相应的 setter 和 getter. <br/>
      *
      * @author Hongbin Yuan
      * @param topLevelClass
@@ -101,7 +101,7 @@ public class PaginationPlugin extends PluginAdapter {
      * @param initializationString
      * @since JDK 1.6
      */
-    private void addFiled(TopLevelClass topLevelClass,
+    private void addField(TopLevelClass topLevelClass,
                           IntrospectedTable introspectedTable,
                           FullyQualifiedJavaType fieldType, String name,
                           String initializationString) {

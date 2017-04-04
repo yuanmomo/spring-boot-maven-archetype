@@ -15,23 +15,23 @@ public class UpdateControllerGenerator {
 	public static List<Method> generator(FullyQualifiedJavaType beanType, String beanName,
                                          String businessFieldName){
 		List<Method> methodList = new ArrayList<Method>();
-		String beanFiledName = StringUtils.uncapitalize(beanName);
+		String beanFieldName = StringUtils.uncapitalize(beanName);
 		
 		Method method = new Method();
 		method.addAnnotation("@RequestMapping(value = \"updateSave" + beanName + ".do\")");
 		method.setVisibility(JavaVisibility.PUBLIC);
 		method.setReturnType(new FullyQualifiedJavaType(AjaxResponseBean.class.getName()));
 		method.setName("updateSave" + beanName);
-		Parameter param1 = new Parameter(beanType, beanFiledName);
+		Parameter param1 = new Parameter(beanType, beanFieldName);
 		param1.addAnnotation("@ModelAttribute ");
 		method.addParameter(param1); 
 		// 方法body
 		method.addBodyLine("try {");
-		method.addBodyLine("if(" + beanFiledName + " == null //){");
-		method.addBodyLine("|| NumberUtil.isNotPositive(" + beanFiledName + ".getId())){");
+		method.addBodyLine("if(" + beanFieldName + " == null //){");
+		method.addBodyLine("|| NumberUtil.isNotPositive(" + beanFieldName + ".getId())){");
 		method.addBodyLine("return AjaxResponseBean.Const.PARAMETER_INVALID_ERROR_RESPONSE_BEAN;");
 		method.addBodyLine("}");
-		method.addBodyLine("int updateCount = this." + businessFieldName + ".update(" + beanFiledName + ");");
+		method.addBodyLine("int updateCount = this." + businessFieldName + ".update(" + beanFieldName + ");");
 		method.addBodyLine("if(updateCount >0 ){");
 		method.addBodyLine("return AjaxResponseBean.Const.SUCCESS_RESPONSE_BEAN;");
 		method.addBodyLine("}");

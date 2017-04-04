@@ -8,7 +8,7 @@ public class BeanMap extends HashMap<String,Object> {
 	 */
 	private static final long serialVersionUID = 2905404173562402174L;
 
-	public Object get(String filed){
-		return this.get(filed);
+	public Object get(String field){
+		return this.get(field);
 	}
 }

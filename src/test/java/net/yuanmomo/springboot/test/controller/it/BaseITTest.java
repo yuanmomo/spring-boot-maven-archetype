@@ -14,9 +14,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.net.URL;
 
 /**
+ *
+ *  Base test class for Spring MVC integration test.
+ *
  * Created by Hongbin.Yuan on 2017-04-04 05:22.
  */
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT,classes = {Application.class})
 @Transactional

@@ -15,20 +15,20 @@ public class BatchUpdateControllerGenerator {
                                          String businessFieldName){
 		List<Method> methodList = new ArrayList<Method>();
 		
-		String innerClassFiledName = StringUtils.uncapitalize(innerClassType.getShortName());
+		String innerClassFieldName = StringUtils.uncapitalize(innerClassType.getShortName());
 		
 		Method method = new Method();
         method.addAnnotation("@RequestMapping(value = \"batchUpdateSave" + beanName + ".do\")");
         method.setVisibility(JavaVisibility.PUBLIC);
         method.setReturnType(new FullyQualifiedJavaType(AjaxResponseBean.class.getName()));
         method.setName("batchUpdateSave" + beanName);
-        Parameter param1 = new Parameter(innerClassType, innerClassFiledName);
+        Parameter param1 = new Parameter(innerClassType, innerClassFieldName);
         param1.addAnnotation("@ModelAttribute ");
         method.addParameter(param1); 
         // 方法body
         method.addBodyLine("try {");
-        method.addBodyLine("if(" + innerClassFiledName + " != null && CollectionUtils.isNotEmpty(" + innerClassFiledName + ".get"+ beanName + "List())){");
-        method.addBodyLine("int updateCount = this." + businessFieldName + ".update(" + innerClassFiledName + ".get"+ beanName + "List());");
+        method.addBodyLine("if(" + innerClassFieldName + " != null && CollectionUtils.isNotEmpty(" + innerClassFieldName + ".get"+ beanName + "List())){");
+        method.addBodyLine("int updateCount = this." + businessFieldName + ".update(" + innerClassFieldName + ".get"+ beanName + "List());");
         method.addBodyLine("if(updateCount >0 ){");
         method.addBodyLine("return AjaxResponseBean.Const.SUCCESS_RESPONSE_BEAN;");
         method.addBodyLine("}");
