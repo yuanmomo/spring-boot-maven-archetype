@@ -36,9 +36,6 @@ public class DemoControllerUnitTest extends BaseUnitTest {
                 .accept(MediaType.APPLICATION_JSON_UTF8))
                 .andReturn().getResponse();
 
-        // check response status
-        preCheckResponse(response, 200);
-
         // check response
         AjaxResponseBean expected = AjaxResponseBean.getReturnValueResponseBean(expectedDemo);
         JSONAssert.assertEquals(gson.toJson(expected),response.getContentAsString(),false);
@@ -58,9 +55,6 @@ public class DemoControllerUnitTest extends BaseUnitTest {
         MockHttpServletResponse response = mvc.perform(requestBuilder)
                 .andReturn().getResponse();
 
-        // check response status
-        preCheckResponse(response, 200);
-
         // check response
         AjaxResponseBean expected = AjaxResponseBean.Const.PARAMETER_INVALID_ERROR_RESPONSE_BEAN;
         JSONAssert.assertEquals(gson.toJson(expected),response.getContentAsString(),false);
@@ -78,11 +72,7 @@ public class DemoControllerUnitTest extends BaseUnitTest {
         requestBuilder.param("pageNum",  expectedPaginationBean.getPageNum() + "");
         requestBuilder.param("numPerPage", expectedPaginationBean.getNumPerPage() + "");
 
-        response = mvc.perform(requestBuilder)
-                .andReturn().getResponse();
-
-        // check response status
-        preCheckResponse(response, 200);
+        response = mvc.perform(requestBuilder).andReturn().getResponse();
 
         // get expected value
         expected = AjaxResponseBean.getReturnValueResponseBean(null);

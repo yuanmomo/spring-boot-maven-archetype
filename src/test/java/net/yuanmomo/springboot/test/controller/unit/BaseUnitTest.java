@@ -11,13 +11,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.mock.web.MockFilterConfig;
-import org.springframework.mock.web.MockHttpServletResponse;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.ServletException;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Hongbin.Yuan on 2017-04-04 05:22.
@@ -64,17 +62,6 @@ public class BaseUnitTest {
         paginationBean.setTotalCount(totalCount);
         paginationBean.setTotalPages(totalPages);
         return paginationBean;
-    }
-
-    /**
-     * check the response first.
-     *
-     * @param response
-     * @param status
-     * @throws UnsupportedEncodingException
-     */
-    protected void preCheckResponse(MockHttpServletResponse response, int status) throws UnsupportedEncodingException {
-        Assert.assertEquals(status, response.getStatus());
     }
 
 }
