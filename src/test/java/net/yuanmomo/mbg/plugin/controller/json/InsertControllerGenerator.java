@@ -30,8 +30,8 @@ public class InsertControllerGenerator {
 		method.addBodyLine("try {");
 		method.addBodyLine("// 数据校验");
 		method.addBodyLine("");
-		method.addBodyLine("this." + businessFieldName + ".insertSelective(" + beanFieldName + ");");
-		method.addBodyLine("return AjaxResponseBean.Const.SUCCESS_RESPONSE_BEAN;");
+		method.addBodyLine("long id = this." + businessFieldName + ".insertSelective(" + beanFieldName + ");");
+		method.addBodyLine("return AjaxResponseBean.getReturnValueResponseBean("+beanFieldName +".getId());");
 		method.addBodyLine("} catch (Exception e) {");
 		method.addBodyLine("logger.error(\"插入异常\" + e.getMessage());");
 		method.addBodyLine("return AjaxResponseBean.getErrorResponseBean(\"插入异常\" + e.getMessage());");

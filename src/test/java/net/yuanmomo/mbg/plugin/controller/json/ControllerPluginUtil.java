@@ -3,6 +3,7 @@ package net.yuanmomo.mbg.plugin.controller.json;
 import net.yuanmomo.mbg.PluginUtil;
 import net.yuanmomo.mbg.plugin.business.BusinessPluginUtil;
 import net.yuanmomo.springboot.util.AjaxResponseBean;
+import net.yuanmomo.springboot.util.NumberUtil;
 import net.yuanmomo.springboot.util.PaginationBean;
 import net.yuanmomo.springboot.util.PaginationUtil;
 import org.apache.commons.collections4.CollectionUtils;
@@ -48,6 +49,7 @@ public class ControllerPluginUtil{
 		CONTROLLER_IMPORT_CLASS_SET.add(PaginationUtil.class);
 		CONTROLLER_IMPORT_CLASS_SET.add(PaginationBean.class);
 		CONTROLLER_IMPORT_CLASS_SET.add(Logger.class);
+		CONTROLLER_IMPORT_CLASS_SET.add(NumberUtil.class);
 		CONTROLLER_IMPORT_CLASS_SET.add(LoggerFactory.class);
 		CONTROLLER_IMPORT_CLASS_SET.add(Autowired.class);
 		CONTROLLER_IMPORT_CLASS_SET.add(List.class);

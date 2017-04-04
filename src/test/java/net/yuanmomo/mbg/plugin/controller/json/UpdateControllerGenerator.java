@@ -27,8 +27,8 @@ public class UpdateControllerGenerator {
 		method.addParameter(param1); 
 		// 方法body
 		method.addBodyLine("try {");
-		method.addBodyLine("if(" + beanFiledName + " == null ){");
-		method.addBodyLine("// || NumberUtil.isNotPositive(" + beanFiledName + ".getId())){");
+		method.addBodyLine("if(" + beanFiledName + " == null //){");
+		method.addBodyLine("|| NumberUtil.isNotPositive(" + beanFiledName + ".getId())){");
 		method.addBodyLine("return AjaxResponseBean.Const.PARAMETER_INVALID_ERROR_RESPONSE_BEAN;");
 		method.addBodyLine("}");
 		method.addBodyLine("int updateCount = this." + businessFieldName + ".update(" + beanFiledName + ");");

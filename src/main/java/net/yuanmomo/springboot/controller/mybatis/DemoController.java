@@ -5,6 +5,7 @@ import net.yuanmomo.springboot.bean.DemoParam;
 import net.yuanmomo.springboot.business.mybatis.DemoBusiness;
 import net.yuanmomo.springboot.exception.BaseException;
 import net.yuanmomo.springboot.util.AjaxResponseBean;
+import net.yuanmomo.springboot.util.NumberUtil;
 import net.yuanmomo.springboot.util.PaginationBean;
 import net.yuanmomo.springboot.util.PaginationUtil;
 import org.apache.commons.collections4.CollectionUtils;
@@ -49,8 +50,8 @@ public class DemoController {
         try {
             // 数据校验
             
-            this.demoBusiness.insertSelective(demo);
-            return AjaxResponseBean.Const.SUCCESS_RESPONSE_BEAN;
+            long id = this.demoBusiness.insertSelective(demo);
+            return AjaxResponseBean.getReturnValueResponseBean(demo.getId());
         } catch (BaseException e1) {
             return AjaxResponseBean.getErrorResponseBean("异常" + e1.getKey());
         } catch (Exception e) {
@@ -150,8 +151,8 @@ public class DemoController {
     @RequestMapping(value = "updateSaveDemo.do")
     public AjaxResponseBean updateSaveDemo(@ModelAttribute  Demo demo) {
         try {
-            if(demo == null ){
-                // || NumberUtil.isNotPositive(demo.getId())){
+            if(demo == null //){
+                || NumberUtil.isNotPositive(demo.getId())){
                     return AjaxResponseBean.Const.PARAMETER_INVALID_ERROR_RESPONSE_BEAN;
                 }
                 int updateCount = this.demoBusiness.update(demo);

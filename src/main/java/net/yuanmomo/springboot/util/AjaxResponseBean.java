@@ -2,7 +2,7 @@ package net.yuanmomo.springboot.util;
 
 
 
-public class AjaxResponseBean {
+public class AjaxResponseBean<T> {
 	/**
 	 * {"statusCode":"200", "message":"操作成功"}
 	 * {"statusCode":"300", "message":"操作失败"}
@@ -20,7 +20,7 @@ public class AjaxResponseBean {
 	 * returnValue: 后台相应返回的json数据.
 	 * @since JDK 1.7
 	 */
-	private Object returnValue = "";
+	private T returnValue ;
 
 	public static final int OK = 200;
 	public static final String OK_MESSAGE = "操作成功";
@@ -44,7 +44,7 @@ public class AjaxResponseBean {
 		this.message = message;
 	}
 
-	private AjaxResponseBean(int statusCode, String message, Object returnValue) {
+	private AjaxResponseBean(int statusCode, String message, T returnValue) {
 		this.statusCode = statusCode;
 		this.message = message;
 		this.returnValue = returnValue;
@@ -80,12 +80,12 @@ public class AjaxResponseBean {
 				new AjaxResponseBean(OK, OK_MESSAGE);
 	}
 
-	public static AjaxResponseBean getReturnValueResponseBean(Object returnObj) {
+	public static <T> AjaxResponseBean getReturnValueResponseBean(T returnObj) {
 		return new AjaxResponseBean(OK, OK_MESSAGE,returnObj);
 	}
 
-	public static AjaxResponseBean getReturnValueResponseBean(int statusCode,
-                                                              String message, Object returnObj) throws Exception {
+	public static <T> AjaxResponseBean getReturnValueResponseBean(int statusCode,
+                                                              String message, T returnObj) throws Exception {
 		return new AjaxResponseBean(statusCode,message, returnObj);
 	}
 
