@@ -27,6 +27,7 @@ public class DemoControllerUnitTest extends BaseUnitTest {
     String getDemoByKey = "getDemoByKey.do";
     String selectDemoList = "selectDemoList.do";
     String updateSaveDemo = "updateSaveDemo.do";
+    String batchUpdateSaveDemo = "batchUpdateSaveDemo.do";
 
 
     @Test
@@ -165,6 +166,59 @@ public class DemoControllerUnitTest extends BaseUnitTest {
         // check return value
         JSONAssert.assertEquals(gson.toJson(expected), response.getContentAsString(), false);
     }
+
+
+    @Test
+    @Sql("classpath:sql/demo.sql")
+    public void testBatchUpdateSaveDemo() throws Exception {
+        /**********************************************************************************************************
+         ***   1. pass invalid parameter
+         **********************************************************************************************************/
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post(BASE_MAPPING + batchUpdateSaveDemo)
+                .accept(MediaType.APPLICATION_JSON_UTF8);
+
+        MockHttpServletResponse response = mvc.perform(requestBuilder).andReturn().getResponse();
+
+        // check response
+        AjaxResponseBean expected = AjaxResponseBean.Const.ERROR_RESPONSE_BEAN;
+        JSONAssert.assertEquals(gson.toJson(expected), response.getContentAsString(), false);
+        /**********************************************************************************************************
+         ***   2. pass valid parameter to batch update
+         **********************************************************************************************************/
+        PaginationBean<Demo> expectedPaginationBean = getPaginationBean(1, 20, 2, 1);
+        List<Demo> expectedDemoList = new ArrayList<>();
+        expectedDemoList.add(getDemo(9999999L, 8888882, 7777772L));
+        expectedDemoList.add(getDemo(99999999L, 88888882, 77777772L));
+        expectedPaginationBean.setResult(expectedDemoList);
+
+        // set valid parameter
+        for (int i = 0; i < expectedDemoList.size(); i++) {
+            requestBuilder.param(String.format("demoList[%d].id",i ), String.valueOf(expectedDemoList.get(i).getId()));
+            requestBuilder.param(String.format("demoList[%d].number",i ), String.valueOf(expectedDemoList.get(i).getNumber()));
+            requestBuilder.param(String.format("demoList[%d].version",i ), String.valueOf(expectedDemoList.get(i).getVersion()));
+        }
+
+        response = mvc.perform(requestBuilder).andReturn().getResponse();
+
+        // get expected value
+        expected = AjaxResponseBean.Const.SUCCESS_RESPONSE_BEAN;
+
+        // check return value
+        JSONAssert.assertEquals(gson.toJson(expected), response.getContentAsString(), false);
+
+        /**********************************************************************************************************
+         ***   3. get and check
+         **********************************************************************************************************/
+        for (Demo demo : expectedDemoList) {
+            response = getById(BASE_MAPPING + getDemoByKey,demo.getId());
+            // get expected value
+            expected = AjaxResponseBean.getReturnValueResponseBean(demo);
+
+            // check return value
+            JSONAssert.assertEquals(gson.toJson(expected), response.getContentAsString(), false);
+        }
+    }
+
 
     /**
      * get instance.
