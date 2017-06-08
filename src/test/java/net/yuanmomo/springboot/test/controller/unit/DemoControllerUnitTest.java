@@ -6,6 +6,7 @@ package net.yuanmomo.springboot.test.controller.unit;
 
 
 import net.yuanmomo.springboot.bean.Demo;
+import net.yuanmomo.springboot.test.BaseUnitTest;
 import net.yuanmomo.springboot.util.PaginationBean;
 import org.junit.Test;
 import org.springframework.test.context.jdbc.Sql;

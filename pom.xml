@@ -16,8 +16,13 @@
     <name>spring-boot-maven-archetype Maven Webapp</name>
     <url>http://maven.apache.org</url>
 
-    <dependencies>
+    <properties>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
 
+    <dependencies>
         <!-- Spring boot WEB -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -91,9 +96,6 @@
         </dependency>
     </dependencies>
 
-    <properties>
-        <java.version>1.8</java.version>
-    </properties>
 
 
     <build>

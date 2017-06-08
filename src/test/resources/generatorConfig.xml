@@ -28,6 +28,10 @@
         </plugin>
 
         <!-- *******************************下面的插件都是自定义插件******************************* -->
+        <!-- 增加一个 selectOne 的 方法  -->
+        <plugin type="net.yuanmomo.mbg.plugin.selectone.MapperAddSelectOneByExamplePlugin" />
+        <plugin type="net.yuanmomo.mbg.plugin.selectone.ProviderAddSelectOneByExamplePlugin" />
+
         <!-- 分页插件， 自带的是假分页，效率很低  -->
         <plugin type="net.yuanmomo.mbg.plugin.PaginationPlugin" />
 
@@ -78,20 +82,21 @@
         </javaModelGenerator>
 
         <!-- java 生成xml文件的配置 -->
-        <sqlMapGenerator targetPackage="${mbg.sqlMapPackage}"
-                         targetProject="${mbg.targetProject}">
-            <property name="enableSubPackages" value="true" />
-        </sqlMapGenerator>
+        <!--<sqlMapGenerator targetPackage="${mbg.sqlMapPackage}"-->
+                         <!--targetProject="${mbg.targetProject}">-->
+            <!--<property name="enableSubPackages" value="true" />-->
+        <!--</sqlMapGenerator>-->
 
         <!-- java 生成 mapper类的配置 -->
-        <javaClientGenerator type="XMLMAPPER"
+        <javaClientGenerator type="ANNOTATEDMAPPER"
                              targetPackage="${mbg.javaClientPackage}" targetProject="${mbg.targetProject}">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
 
-
         <!-- 配置需要自动生成的表，可配置多个table标签 -->
         <table tableName="demo" domainObjectName="Demo" >
+            <!-- 配置数据库的名称，等于 schema, 这样生成的 sql 就是 schema.table, 可以实现单实例多库的操作 -->
+            <!--<property name="runtimeSchema" value="test"/>-->
 
             <!-- 生成的business文件名称,不配置，则不会生成business  -->
             <property name="generatedBusinessName" value="DemoBusiness"/>

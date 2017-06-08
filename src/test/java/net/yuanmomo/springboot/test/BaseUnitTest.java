@@ -1,4 +1,4 @@
-package net.yuanmomo.springboot.test.controller.unit;
+package net.yuanmomo.springboot.test;
 
 import com.google.common.collect.Sets;
 import com.google.gson.Gson;
