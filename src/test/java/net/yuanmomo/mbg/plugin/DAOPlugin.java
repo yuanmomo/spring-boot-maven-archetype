@@ -2,7 +2,7 @@
 /**
  * Project Name : Tools
  * File Name    : DAOPlugin.java
- * Package Name : net.yuanmomo.dwz.tools.db.orm.mybatis.generator.plugin.dao
+ * Package Name : net.yuanmomo.dwz.tools.db.orm.mybatis.generator.plugin.business
  * Created on   : 2014-2-17下午8:23:27
  * Author       : Hongbin Yuan
  * Blog         : yuanmomo.net
@@ -13,17 +13,11 @@ package net.yuanmomo.mbg.plugin;
 
 import org.mybatis.generator.api.CommentGenerator;
 import org.mybatis.generator.api.GeneratedJavaFile;
-import org.mybatis.generator.api.GeneratedXmlFile;
 import org.mybatis.generator.api.IntrospectedTable;
 import org.mybatis.generator.api.PluginAdapter;
 import org.mybatis.generator.api.dom.java.FullyQualifiedJavaType;
 import org.mybatis.generator.api.dom.java.Interface;
 import org.mybatis.generator.api.dom.java.JavaVisibility;
-import org.mybatis.generator.api.dom.xml.Attribute;
-import org.mybatis.generator.api.dom.xml.Document;
-import org.mybatis.generator.api.dom.xml.TextElement;
-import org.mybatis.generator.api.dom.xml.XmlElement;
-import org.mybatis.generator.codegen.XmlConstants;
 import org.mybatis.generator.config.PropertyRegistry;
 
 import java.util.ArrayList;
@@ -113,42 +107,42 @@ public class DAOPlugin extends PluginAdapter {
 	 * @return
 	 * @see PluginAdapter#contextGenerateAdditionalXmlFiles(IntrospectedTable)
 	 */
-	@Override
-	public List<GeneratedXmlFile> contextGenerateAdditionalXmlFiles(
-			IntrospectedTable introspectedTable) {
-		// 设置文件类型,DAO 的xml文件, 原命名空间,用设置的值替换
-		String xmlMapperNamespace = introspectedTable.getMyBatis3SqlMapNamespace();
-		String typeNameProp = this.getProperties().getProperty("typeName");
-		if(typeNameProp == null || "".equals(typeNameProp.trim())){
-			typeNameProp = typeName;
-		}
-		xmlMapperNamespace = xmlMapperNamespace.replaceAll("Mapper$",typeNameProp);
-		
-		// 创建mapper文件,
-		Document document = new Document(
-	                XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID,
-	                XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
-		// 创建根 root元素
-		XmlElement root = new XmlElement("mapper"); //$NON-NLS-1$
-        root.addAttribute(new Attribute("namespace", //$NON-NLS-1$
-        		xmlMapperNamespace));
-        
-        context.getCommentGenerator().addRootComment(root);
-        document.setRootElement(root);
-
-        // 像root添加一个空元素
-        root.addElement(new TextElement("\n"));
-        
-        String xmlMapperName = introspectedTable.getMyBatis3XmlMapperFileName();
-        xmlMapperName = xmlMapperName.replaceAll("Mapper.xml$",typeNameProp+".xml");
-		GeneratedXmlFile gxf = new GeneratedXmlFile(document,
-				xmlMapperName, introspectedTable.getMyBatis3XmlMapperPackage(),
-                context.getSqlMapGeneratorConfiguration().getTargetProject(),
-                true, context.getXmlFormatter());
-		List<GeneratedXmlFile> gxfList = new ArrayList<GeneratedXmlFile>();
-        
-		gxfList.add(gxf);
-        
-		return gxfList;
-	}
+//	@Override
+//	public List<GeneratedXmlFile> contextGenerateAdditionalXmlFiles(
+//			IntrospectedTable introspectedTable) {
+//		// 设置文件类型,DAO 的xml文件, 原命名空间,用设置的值替换
+//		String xmlMapperNamespace = introspectedTable.getMyBatis3SqlMapNamespace();
+//		String typeNameProp = this.getProperties().getProperty("typeName");
+//		if(typeNameProp == null || "".equals(typeNameProp.trim())){
+//			typeNameProp = typeName;
+//		}
+//		xmlMapperNamespace = xmlMapperNamespace.replaceAll("Mapper$",typeNameProp);
+//
+//		// 创建mapper文件,
+//		Document document = new Document(
+//	                XmlConstants.MYBATIS3_MAPPER_PUBLIC_ID,
+//	                XmlConstants.MYBATIS3_MAPPER_SYSTEM_ID);
+//		// 创建根 root元素
+//		XmlElement root = new XmlElement("mapper"); //$NON-NLS-1$
+//        root.addAttribute(new Attribute("namespace", //$NON-NLS-1$
+//        		xmlMapperNamespace));
+//
+//        context.getCommentGenerator().addRootComment(root);
+//        document.setRootElement(root);
+//
+//        // 像root添加一个空元素
+//        root.addElement(new TextElement("\n"));
+//
+//        String xmlMapperName = introspectedTable.getMyBatis3XmlMapperFileName();
+//        xmlMapperName = xmlMapperName.replaceAll("Mapper.xml$",typeNameProp+".xml");
+//		GeneratedXmlFile gxf = new GeneratedXmlFile(document,
+//				xmlMapperName, introspectedTable.getMyBatis3XmlMapperPackage(),
+//                context.getSqlMapGeneratorConfiguration().getTargetProject(),
+//                true, context.getXmlFormatter());
+//		List<GeneratedXmlFile> gxfList = new ArrayList<GeneratedXmlFile>();
+//
+//		gxfList.add(gxf);
+//
+//		return gxfList;
+//	}
 }

@@ -1,12 +1,12 @@
-/** 
+/**
  * Project Name : dooliuManager
  * Package Name : com.clou.douliu.server.mybatis.generator
  * Created on   : 2013-9-6下午3:08:21
  * File Name    : PaginationPlugin.java
- *
+ * <p>
  * Author       : Hongbin Yuan
  * Blog         : yuanmomo.net
- * Company      : 成都逗溜网科技有限公司  
+ * Company      : 成都逗溜网科技有限公司
  */
 
 package net.yuanmomo.mbg.plugin;
@@ -15,9 +15,9 @@ package net.yuanmomo.mbg.plugin;
  * Date      : 2013-9-6 下午3:08:21
  *
  * @author   : Hongbin Yuan
- * @version  
- * @since      JDK 1.6
- * @see 	 
+ * @version
+ * @since JDK 1.6
+ * @see
  */
 
 import org.mybatis.generator.api.CommentGenerator;
@@ -51,7 +51,7 @@ public class PaginationPlugin extends PluginAdapter {
      */
     @Override
     public boolean modelExampleClassGenerated(TopLevelClass topLevelClass,
-            IntrospectedTable introspectedTable) {
+                                              IntrospectedTable introspectedTable) {
         // add field, getter, setter for limit start clause
         this.addField(topLevelClass, introspectedTable,
                 new FullyQualifiedJavaType("long"), "start", "-1");
@@ -88,6 +88,33 @@ public class PaginationPlugin extends PluginAdapter {
 
         return super.sqlMapUpdateByExampleWithoutBLOBsElementGenerated(element,
                 introspectedTable);
+    }
+
+    @Override
+    public boolean providerSelectByExampleWithoutBLOBsMethodGenerated(
+            Method method,
+            TopLevelClass topLevelClass,
+            IntrospectedTable introspectedTable) {
+
+        List<String> bodyLines = method.getBodyLines();
+        // delete the line of "return sql.toString();"
+        bodyLines.remove(bodyLines.size() - 1);
+
+        bodyLines.add("// add pagination for mysql with limit clause ");
+        bodyLines.add("StringBuilder sqlBuilder = new StringBuilder(sql.toString());");
+        bodyLines.add("if(example != null && (example.getStart() > -1 || example.getCount() > -1) ){");
+        bodyLines.add("sqlBuilder.append(\" limit \");");
+        bodyLines.add("if(example.getStart() > -1 && example.getCount() > -1){");
+        bodyLines.add("sqlBuilder.append(example.getStart()).append(\",\").append(example.getCount());");
+        bodyLines.add("}else if( example.getStart() > -1 ){");
+        bodyLines.add("sqlBuilder.append(example.getStart());");
+        bodyLines.add("}else if( example.getCount() > -1 ){");
+        bodyLines.add("sqlBuilder.append(example.getCount());");
+        bodyLines.add("}");
+        bodyLines.add("}");
+        bodyLines.add("return sqlBuilder.toString();");
+
+        return super.providerSelectByExampleWithoutBLOBsMethodGenerated(method, topLevelClass, introspectedTable);
     }
 
     /**
@@ -137,6 +164,7 @@ public class PaginationPlugin extends PluginAdapter {
         commentGenerator.addGeneralMethodComment(method, introspectedTable);
         topLevelClass.addMethod(method);
     }
+
     /**
      * This plugin is always valid - no properties are required
      */

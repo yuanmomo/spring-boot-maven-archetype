@@ -5,6 +5,7 @@ package net.yuanmomo.springboot.test.controller.unit;
  */
 
 
+import net.yuanmomo.springboot.test.BaseUnitTest;
 import org.junit.Test;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -14,7 +15,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-public class HelloControllerUnitTest extends BaseUnitTest{
+public class HelloControllerUnitTest extends BaseUnitTest {
 
     @Test
     public void getHello() throws Exception {
