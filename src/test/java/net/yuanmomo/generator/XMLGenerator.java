@@ -1,14 +1,16 @@
 package net.yuanmomo.generator;
 
 
-import net.yuanmomo.mbg.plugin.TableXMLGenerator;
+
+import com.github.yuanmomo.mybatis.mbg.table.MySqlTableXmlPrinter;
 
 import java.util.List;
 
 public class XMLGenerator {
 	public static void main(String[] args) throws Exception {
-		List<String> output = new TableXMLGenerator().generator("src/main/resources/application.properties");
-		for(String str : output){
+		MySqlTableXmlPrinter printer = new MySqlTableXmlPrinter("root","root");
+		List<String> outputList = printer.print("test");
+		for(String str : outputList){
 			System.out.println(str);
 		}
 	}
