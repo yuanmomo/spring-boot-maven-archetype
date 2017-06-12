@@ -11,7 +11,7 @@
     <groupId>net.yuanmomo.spring.boot</groupId>
     <artifactId>spring-boot-maven-archetype</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <name>spring-boot-maven-archetype Maven Webapp</name>
     <url>http://maven.apache.org</url>
